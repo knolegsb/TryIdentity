@@ -6,14 +6,16 @@ using System.Web.Mvc;
 
 namespace TryIdentity.Controllers
 {
+    [Authorize(Roles ="admin, sales")]
     public class SecretController : Controller
     {
-        [Authorize]
+        
         public ContentResult Secret()
         {
             return Content("This is a secret...");
         }
 
+        [AllowAnonymous]
         public ContentResult Overt()
         {
             return Content("This is not a secret...");
